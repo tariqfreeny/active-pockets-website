@@ -1,0 +1,677 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Menu, 
+  X, 
+  ChevronRight, 
+  ArrowRightLeft, 
+  AlertTriangle, 
+  Hourglass, 
+  CheckCircle, 
+  Shield, 
+  Target, 
+  Users, 
+  Cpu, 
+  FileText,
+  Play
+} from 'lucide-react';
+
+const ActivePockets = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false); // For Teams
+  const [isAthleteModalOpen, setIsAthleteModalOpen] = useState(false); // New state for Athletes
+
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (id) => {
+    setIsMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Close modal when clicking outside
+  const handleModalBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsContactModalOpen(false);
+      setIsAthleteModalOpen(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-neutral-950 text-white font-sans selection:bg-lime-400 selection:text-black overflow-x-hidden relative">
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(163, 230, 53, 0.6);
+        }
+      `}</style>
+      
+      {/* Navigation */}
+      <nav 
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-neutral-950/90 backdrop-blur-md border-b border-white/10 py-4' : 'bg-transparent py-6'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+            <div className="w-8 h-8 bg-lime-400 rounded-lg flex items-center justify-center">
+              <span className="font-bold text-black text-xl">A</span>
+            </div>
+            <span className="text-xl font-bold tracking-tight">ACTIVE POCKETS</span>
+          </div>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-300">
+            <button onClick={() => scrollToSection('problem')} className="hover:text-lime-400 transition-colors">The Problem</button>
+            <button onClick={() => scrollToSection('solution')} className="hover:text-lime-400 transition-colors">The Combine</button>
+            <button onClick={() => scrollToSection('process')} className="hover:text-lime-400 transition-colors">How It Works</button>
+            <button onClick={() => scrollToSection('pricing')} className="hover:text-lime-400 transition-colors">Pricing</button>
+            <button 
+              onClick={() => setIsAthleteModalOpen(true)}
+              className="bg-white text-neutral-950 px-6 py-2.5 rounded-full font-bold hover:bg-lime-400 transition-all duration-300 transform hover:scale-105"
+            >
+              Get Your Playbook
+            </button>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button 
+            className="md:hidden text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+
+        {/* Mobile Nav Overlay */}
+        {isMobileMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-neutral-900 border-b border-white/10 p-6 flex flex-col gap-6 md:hidden">
+            <button onClick={() => scrollToSection('problem')} className="text-left text-lg font-medium">The Problem</button>
+            <button onClick={() => scrollToSection('solution')} className="text-left text-lg font-medium">The Combine</button>
+            <button onClick={() => scrollToSection('process')} className="text-left text-lg font-medium">How It Works</button>
+            <button onClick={() => scrollToSection('pricing')} className="text-left text-lg font-medium">Pricing</button>
+            <button 
+              onClick={() => { setIsAthleteModalOpen(true); setIsMobileMenuOpen(false); }}
+              className="bg-lime-400 text-black px-6 py-3 rounded-full font-bold w-full text-center"
+            >
+              Get Your Playbook
+            </button>
+          </div>
+        )}
+      </nav>
+
+      {/* SECTION 1: HERO */}
+      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        {/* Abstract Background Element */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-lime-400/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-lime-400 text-xs font-bold tracking-wider uppercase">
+              <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+              Accepting New Athletes
+            </div>
+            
+            <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+              Your Money, <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-lime-500">
+                Your Playbook.
+              </span> <br />
+              Built for You.
+            </h1>
+            
+            <p className="text-lg text-neutral-400 max-w-lg leading-relaxed">
+              Active Pockets is a "done-for-you" service that delivers a professional-grade financial playbook to help you secure your future. No homework. No confusing jargon. Just a world-class game plan.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <button 
+                onClick={() => setIsAthleteModalOpen(true)}
+                className="bg-lime-400 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(163,230,53,0.3)]"
+              >
+                Get Your Playbook
+              </button>
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="group flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/20 hover:bg-white/5 transition-all font-medium"
+              >
+                For Teams & Institutions 
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </div>
+
+          <div className="relative lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent z-10 opacity-60"></div>
+            <img 
+              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+              alt="Athlete reviewing financial data" 
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+            />
+            
+            {/* Floating UI Element Mockup */}
+            <div className="absolute bottom-8 left-8 right-8 z-20 bg-neutral-900/90 backdrop-blur-xl p-6 rounded-xl border border-white/10 shadow-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="flex justify-between items-end mb-2">
+                <div>
+                  <p className="text-xs text-neutral-400 uppercase tracking-wider mb-1">Projected Net Worth</p>
+                  <p className="text-3xl font-bold text-white">$2.4M</p>
+                </div>
+                <div className="text-lime-400 text-sm font-bold flex items-center gap-1">
+                  +12.5% <span className="bg-lime-400/20 p-1 rounded">▲</span>
+                </div>
+              </div>
+              <div className="h-1.5 w-full bg-neutral-800 rounded-full overflow-hidden">
+                <div className="h-full bg-lime-400 w-3/4 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: THE PROBLEM */}
+      <section id="problem" className="py-24 bg-neutral-900 border-y border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Your Talent is Elite. <br />Your Financial Plan Should Be, Too.</h2>
+            <p className="text-neutral-400 text-lg">
+              The moment you sign an NIL deal, the noise begins. Everyone has a "great idea" for your money. 
+              It's impossible to know who to trust. This is where athletes lose—not on the field, but by lacking a game plan.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <ProblemCard 
+              icon={<ArrowRightLeft className="w-8 h-8 text-lime-400" />}
+              title="Confusing Advice"
+              desc="Agents, 'friends', and family pulling you in different directions with conflicting strategies."
+            />
+            <ProblemCard 
+              icon={<AlertTriangle className="w-8 h-8 text-lime-400" />}
+              title="Hidden Risks"
+              desc="Predatory deals and tax liabilities that look like opportunities until it's too late."
+            />
+            <ProblemCard 
+              icon={<Hourglass className="w-8 h-8 text-lime-400" />}
+              title="A Short Career Window"
+              desc="Your earning power is explosive but time-limited. You need to maximize it now."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: THE SOLUTION */}
+      <section id="solution" className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                The Financial Combine: <br />
+                <span className="text-lime-400">Your Playbook, Built by Pros.</span>
+              </h2>
+              <p className="text-neutral-400 text-lg mb-8">
+                The Financial Combine is a four-week program where you are the star player. You join live group sessions to learn strategies, then meet privately with your AI Assistant Coach to provide intel. We do the rest.
+              </p>
+              
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-lime-400 shrink-0 mt-0.5" />
+                  <span className="text-neutral-300">Market intelligence engine constructs your plan.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-lime-400 shrink-0 mt-0.5" />
+                  <span className="text-neutral-300">Customized to your specific contract & goals.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-lime-400 shrink-0 mt-0.5" />
+                  <span className="text-neutral-300">4-Week sprint to total financial clarity.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Visual Process Flow */}
+            <div className="bg-neutral-900 border border-white/10 rounded-3xl p-8 lg:p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-lime-400/10 blur-[80px] rounded-full pointer-events-none" />
+              
+              <div className="flex flex-col gap-8 relative z-10">
+                <div className="bg-neutral-800/50 p-6 rounded-xl border border-white/5 flex items-center gap-4">
+                  <div className="bg-neutral-700 p-3 rounded-lg"><Users className="text-white" /></div>
+                  <div>
+                    <p className="text-xs text-lime-400 font-bold uppercase">Step 1: Input</p>
+                    <p className="font-bold text-lg">Your Unique Goals</p>
+                  </div>
+                </div>
+
+                <div className="flex justify-center -my-4 z-0">
+                   <div className="h-12 w-0.5 bg-gradient-to-b from-neutral-700 to-lime-400"></div>
+                </div>
+
+                <div className="bg-neutral-800/80 p-6 rounded-xl border border-lime-500/30 shadow-[0_0_30px_rgba(163,230,53,0.1)] flex items-center gap-4">
+                  <div className="bg-lime-400 p-3 rounded-lg"><Cpu className="text-black" /></div>
+                  <div>
+                    <p className="text-xs text-lime-400 font-bold uppercase">Step 2: Processing</p>
+                    <p className="font-bold text-lg">Active Pockets Engine</p>
+                  </div>
+                </div>
+
+                <div className="flex justify-center -my-4 z-0">
+                   <div className="h-12 w-0.5 bg-gradient-to-b from-lime-400 to-neutral-700"></div>
+                </div>
+
+                <div className="bg-white text-black p-6 rounded-xl border border-white/5 flex items-center gap-4 transform hover:scale-105 transition-transform duration-300 cursor-default">
+                  <div className="bg-black p-3 rounded-lg"><FileText className="text-lime-400" /></div>
+                  <div>
+                    <p className="text-xs text-neutral-600 font-bold uppercase">Step 3: Output</p>
+                    <p className="font-bold text-lg">Your Pro Playbook</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: HOW IT WORKS */}
+      <section id="process" className="py-24 bg-neutral-900 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">How It Works</h2>
+            <p className="text-neutral-400">Demystifying the journey to financial freedom.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connector Line for Desktop */}
+            <div className="hidden md:block absolute top-12 left-[20%] right-[20%] h-0.5 bg-gradient-to-r from-neutral-800 via-lime-400/50 to-neutral-800 z-0"></div>
+
+            <StepCard 
+              number="01"
+              title="Join the Combine"
+              desc="Participate in live 'Team Practices' to learn core strategies and complete private breakdowns with your AI Coach."
+            />
+            <StepCard 
+              number="02"
+              title="We Build Your Blueprint"
+              desc="Our expert team analyzes your data and uses our pro-level engine to construct your custom, multi-chapter playbook."
+            />
+            <StepCard 
+              number="03"
+              title="Lead Your Team"
+              desc="Receive your completed playbook. Use it to lead your financial advisor, agent, and family with clarity."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: THE DELIVERABLE */}
+      <section className="py-24 overflow-hidden relative">
+        <div className="absolute inset-0 bg-neutral-950"></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1 relative">
+              {/* Tablet Mockup */}
+              <div className="relative mx-auto w-full max-w-[600px] aspect-[4/3] bg-neutral-800 rounded-[2rem] border-[8px] border-neutral-700 shadow-2xl p-2 md:p-4">
+                <div className="w-full h-full bg-neutral-900 rounded-xl overflow-hidden relative flex flex-col">
+                  {/* Mockup Header - Simple App Bar */}
+                  <div className="h-14 bg-neutral-800/50 flex items-center px-6 border-b border-white/5 justify-between backdrop-blur-sm sticky top-0 z-20">
+                    <div className="flex items-center gap-2">
+                       <div className="w-6 h-6 bg-lime-400 rounded flex items-center justify-center text-black font-bold text-[10px]">A</div>
+                       <span className="text-xs font-bold text-neutral-300 tracking-wider">ACTIVE POCKETS</span>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-neutral-700 border border-white/10 flex items-center justify-center">
+                        <Users className="w-4 h-4 text-neutral-400" />
+                    </div>
+                  </div>
+                  
+                  {/* Mockup Body - Single Column Dashboard */}
+                  <div className="flex-1 p-6 md:p-8 overflow-y-auto custom-scrollbar relative z-0">
+                    
+                    {/* Hero Stats Card */}
+                    <div className="bg-gradient-to-br from-neutral-800 to-neutral-800/50 p-6 rounded-2xl border border-white/10 mb-8 shadow-lg relative overflow-hidden group">
+                       <div className="absolute top-0 right-0 w-32 h-32 bg-lime-400/10 rounded-full blur-[40px] pointer-events-none"></div>
+                       <div className="relative z-10">
+                         <p className="text-xs text-neutral-400 font-bold uppercase tracking-wider mb-2">Projected Lifetime Value</p>
+                         <div className="flex items-baseline gap-3 mb-4">
+                            <h3 className="text-3xl md:text-4xl font-bold text-white">$12.4M</h3>
+                            <span className="px-2 py-0.5 rounded bg-lime-400/20 border border-lime-400/20 text-lime-400 text-xs font-bold">+8.4%</span>
+                         </div>
+                         <div className="w-full h-1.5 bg-neutral-700 rounded-full overflow-hidden">
+                            <div className="w-3/4 h-full bg-lime-400 rounded-full"></div>
+                         </div>
+                       </div>
+                    </div>
+
+                    {/* Single Column Metric List */}
+                    <div className="space-y-4 pb-12">
+                      <div className="text-xs text-neutral-500 font-bold uppercase tracking-widest pl-1 mb-2">My Playbook Settings</div>
+                      
+                      {/* Item 1 */}
+                      <div className="flex items-center justify-between p-4 rounded-xl bg-neutral-800/30 border border-white/5 hover:bg-neutral-800/50 transition-colors">
+                         <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500">
+                               <Target className="w-5 h-5" />
+                            </div>
+                            <div>
+                               <p className="text-xs text-neutral-400 font-bold uppercase">Risk Profile</p>
+                               <p className="text-sm md:text-base font-bold text-white">Aggressive Growth</p>
+                            </div>
+                         </div>
+                         <div className="h-2 w-2 rounded-full bg-red-500"></div>
+                      </div>
+
+                      {/* Item 2 */}
+                      <div className="flex items-center justify-between p-4 rounded-xl bg-neutral-800/30 border border-white/5 hover:bg-neutral-800/50 transition-colors">
+                         <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500">
+                               <Cpu className="w-5 h-5" />
+                            </div>
+                            <div>
+                               <p className="text-xs text-neutral-400 font-bold uppercase">Model Allocation</p>
+                               <p className="text-sm md:text-base font-bold text-white">D-7 (Tech & Real Estate)</p>
+                            </div>
+                         </div>
+                         <div className="h-2 w-2 rounded-full bg-blue-500"></div>
+                      </div>
+
+                      {/* Item 3 */}
+                      <div className="flex items-center justify-between p-4 rounded-xl bg-neutral-800/30 border border-white/5 hover:bg-neutral-800/50 transition-colors">
+                         <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-full bg-lime-400/20 flex items-center justify-center text-lime-400">
+                               <Shield className="w-5 h-5" />
+                            </div>
+                            <div>
+                               <p className="text-xs text-neutral-400 font-bold uppercase">Guardrails</p>
+                               <p className="text-sm md:text-base font-bold text-white">Active & Monitored</p>
+                            </div>
+                         </div>
+                         <div className="h-2 w-2 rounded-full bg-lime-400 animate-pulse"></div>
+                      </div>
+
+                    </div>
+                  </div>
+                  
+                  {/* Bottom Fade Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent pointer-events-none z-10"></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">This is Your <br /><span className="text-lime-400">CEO Manual.</span></h2>
+              <p className="text-neutral-400 text-lg mb-8">
+                Your custom playbook is delivered in a secure digital portal. It's not a static PDF; it's a living strategy document.
+              </p>
+              
+              <div className="space-y-6">
+                <DeliverableItem title="Your Personal Financial Mission Statement" />
+                <DeliverableItem title="Investment Philosophy & Risk Profile" />
+                <DeliverableItem title="Sample Asset Allocations That Match Your Style" />
+                <DeliverableItem title="Custom 'Defensive Guardrails' Checklist" />
+                <DeliverableItem title="'CEO Roundtable' Framework to Manage Advisors" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: PRICING */}
+      <section id="pricing" className="py-24 bg-neutral-900 border-t border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">An Investment in a <br />Secure Future.</h2>
+          <p className="text-neutral-400 text-lg mb-12 max-w-2xl mx-auto">
+            The complete "Financial Combine" program, including all live sessions, private breakdowns, and your custom-built digital playbook.
+          </p>
+
+          <div className="bg-neutral-950 rounded-3xl p-8 md:p-12 border border-lime-400/30 shadow-[0_0_50px_rgba(163,230,53,0.05)] relative overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-lime-400 shadow-[0_0_20px_rgba(163,230,53,1)]"></div>
+            
+            <h3 className="text-2xl font-bold mb-6">The Financial Combine Program</h3>
+            
+            {/* Price section removed, replaced with value summary */}
+            <div className="mb-10 p-6 bg-white/5 rounded-2xl border border-white/5 max-w-lg mx-auto">
+              <p className="text-lg text-neutral-300 italic">
+                "The best investment you can make is in your own financial literacy."
+              </p>
+              <div className="mt-4 flex items-center justify-center gap-2 text-lime-400 text-sm font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+                Enrollment Currently Open
+              </div>
+            </div>
+            
+            <button 
+              onClick={() => setIsAthleteModalOpen(true)}
+              className="w-full md:w-auto bg-lime-400 text-black px-12 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all transform hover:scale-105 mb-6"
+            >
+              Get Your Playbook
+            </button>
+            
+            <p className="text-sm text-neutral-500">
+              Coaches & Directors: <a href="#" onClick={(e) => { e.preventDefault(); setIsContactModalOpen(true); }} className="underline hover:text-lime-400">Inquire about rates for teams & NIL collectives.</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: FINAL CTA */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 z-0">
+            <img 
+              src="https://images.unsplash.com/photo-1434626881859-194d67b2b86f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
+              alt="Stadium lights" 
+              className="w-full h-full object-cover opacity-20"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/80 to-neutral-900/90"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">Stop Guessing. <br />Start Building.</h2>
+          <p className="text-xl text-neutral-300 mb-10 max-w-2xl mx-auto">
+            Your professional career on the field has a playbook. It's time to get one for your life off the field. Take control of your financial future today.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button 
+              onClick={() => setIsAthleteModalOpen(true)}
+              className="bg-lime-400 text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all shadow-lg shadow-lime-400/20"
+            >
+              Get Your Playbook
+            </button>
+            <button 
+              onClick={() => setIsContactModalOpen(true)}
+              className="px-10 py-4 rounded-full font-bold text-lg border border-white/20 hover:bg-white/10 transition-all"
+            >
+              Schedule a Team Demo
+            </button>
+          </div>
+        </div>
+      </section>
+      {/* Contact Sales Modal (For Teams) */}
+      {isContactModalOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          onClick={handleModalBackdropClick}
+        >
+          <div className="bg-neutral-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative animate-in zoom-in-95 duration-200">
+            <button 
+              onClick={() => setIsContactModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            
+            <div className="p-8">
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-400/10 border border-lime-400/20 text-lime-400 text-xs font-bold tracking-wider uppercase mb-3">
+                  Institutional Access
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Equip Your Entire Roster</h3>
+                <p className="text-neutral-400">
+                  Fill out the form below to schedule a demo for your athletic department or NIL collective.
+                </p>
+              </div>
+
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-neutral-500 uppercase">First Name</label>
+                    <input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors" placeholder="Coach" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-neutral-500 uppercase">Last Name</label>
+                    <input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors" placeholder="Carter" />
+                  </div>
+                </div>
+                
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-neutral-500 uppercase">Work Email</label>
+                  <input type="email" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors" placeholder="coach@university.edu" />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-neutral-500 uppercase">Organization / School</label>
+                  <input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors" placeholder="State University" />
+                </div>
+
+                <button className="w-full bg-lime-400 text-black font-bold py-4 rounded-xl hover:bg-lime-300 transition-colors mt-2">
+                  Request Demo
+                </button>
+                
+                <p className="text-center text-xs text-neutral-500 mt-4">
+                  Prefer to email? <a href="#" className="underline hover:text-white">partnerships@activepockets.com</a>
+                </p>
+              </form>
+            </div>
+            
+            <div className="bg-neutral-950 p-4 border-t border-white/5 text-center">
+              <p className="text-xs text-neutral-500">Trusted by top programs across the country.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Athlete Lead Form Modal */}
+      {isAthleteModalOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+          onClick={handleModalBackdropClick}
+        >
+          <div className="bg-neutral-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative animate-in zoom-in-95 duration-200">
+            <button 
+              onClick={() => setIsAthleteModalOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-neutral-800 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            
+            <div className="p-8">
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-400/10 border border-lime-400/20 text-lime-400 text-xs font-bold tracking-wider uppercase mb-3">
+                  Athlete Access
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Claim Your Playbook</h3>
+                <p className="text-neutral-400">
+                  Ready to secure your financial future? Fill out the details below to start your application for the next Combine.
+                </p>
+              </div>
+
+              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-neutral-500 uppercase">First Name</label>
+                    <input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors" placeholder="Marcus" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-neutral-500 uppercase">Last Name</label>
+                    <input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors" placeholder="Johnson" />
+                  </div>
+                </div>
+                
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-neutral-500 uppercase">Email Address</label>
+                  <input type="email" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors" placeholder="marcus@example.com" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-neutral-500 uppercase">Sport</label>
+                    <select className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors appearance-none">
+                      <option>Football</option>
+                      <option>Basketball</option>
+                      <option>Baseball</option>
+                      <option>Soccer</option>
+                      <option>Track & Field</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-xs font-bold text-neutral-500 uppercase">Current Level</label>
+                    <select className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400 transition-colors appearance-none">
+                      <option>NCAA (College)</option>
+                      <option>Professional</option>
+                      <option>High School / Prep</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button className="w-full bg-lime-400 text-black font-bold py-4 rounded-xl hover:bg-lime-300 transition-colors mt-2">
+                  Start Application
+                </button>
+              </form>
+            </div>
+            
+            <div className="bg-neutral-950 p-4 border-t border-white/5 text-center">
+              <p className="text-xs text-neutral-500 flex items-center justify-center gap-2">
+                <Shield className="w-3 h-3" /> Secure & Confidential. We never share your data.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Sub-components for cleaner code
+const ProblemCard = ({ icon, title, desc }) => (
+  <div className="bg-neutral-800/30 p-8 rounded-2xl border border-white/5 hover:border-lime-400/30 transition-all duration-300 hover:bg-neutral-800/50 group">
+    <div className="bg-neutral-900 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+      {icon}
+    </div>
+    <h3 className="text-xl font-bold mb-3 group-hover:text-lime-400 transition-colors">{title}</h3>
+    <p className="text-neutral-400 leading-relaxed">{desc}</p>
+  </div>
+);
+
+const StepCard = ({ number, title, desc }) => (
+  <div className="relative z-10 bg-neutral-950 p-8 rounded-2xl border border-white/10 text-center group hover:-translate-y-2 transition-transform duration-300">
+    <div className="inline-block text-5xl font-black text-neutral-800 mb-4 group-hover:text-lime-400/20 transition-colors">{number}</div>
+    <h3 className="text-xl font-bold mb-3">{title}</h3>
+    <p className="text-neutral-400">{desc}</p>
+  </div>
+);
+
+const DeliverableItem = ({ title }) => (
+  <div className="flex items-center gap-4 bg-neutral-900/50 p-4 rounded-xl border border-white/5 hover:border-lime-400/20 transition-colors">
+    <Target className="w-5 h-5 text-lime-400 shrink-0" />
+    <span className="font-medium text-neutral-200">{title}</span>
+  </div>
+);
+
+export default ActivePockets;
