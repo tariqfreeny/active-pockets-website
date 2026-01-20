@@ -111,23 +111,18 @@
                             </p>
 
                             {/* Video Placeholder */}
-                            <div className="relative aspect-video w-full bg-neutral-900 rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(163,230,53,0.1)] overflow-hidden group">
-                                {/* Replace the image below with your actual video embed (YouTube/Vimeo iframe) */}
-                                <img 
-                                    src="https://images.unsplash.com/photo-1574602305370-e27043328c68?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
-                                    alt="Video Thumbnail" 
-                                    className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" 
-                                />
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <button className="w-20 h-20 bg-lime-400 rounded-full flex items-center justify-center pl-1 text-neutral-950 hover:scale-110 transition-transform shadow-lg shadow-lime-400/30">
-                                        <Play className="w-8 h-8 fill-current" />
-                                    </button>
-                                </div>
-                                <div className="absolute bottom-6 left-6 text-left">
-                                    <p className="text-xs font-bold text-lime-400 uppercase tracking-wider mb-1">Now Playing</p>
-                                    <p className="text-xl font-bold text-white">The Active Pockets System Overview</p>
-                                </div>
-                            </div>
+                            {/* Video Container */}
+<div className="relative aspect-video w-full bg-neutral-900 rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(163,230,53,0.1)] overflow-hidden">
+    <iframe 
+        className="w-full h-full"
+        src="https://www.youtube.com/embed/HXI62BdgwRA?si=UJaCo5bkmJsCrvz6" 
+        title="YouTube video player" 
+        frameBorder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerPolicy="strict-origin-when-cross-origin" 
+        allowFullScreen
+    ></iframe>
+</div>
                         </div>
                     </section>
 
