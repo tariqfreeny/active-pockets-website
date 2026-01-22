@@ -5,17 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inside The Combine - Active Pockets</title>
     
-    <!-- React & ReactDOM -->
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     
-    <!-- Babel for JSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -50,7 +46,6 @@
         }
     </script>
 
-    <!-- Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <style type="text/tailwindcss">
@@ -73,6 +68,8 @@
         const Shield = (props) => <Icon {...props}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /></Icon>;
         const Check = (props) => <Icon {...props}><polyline points="20 6 9 17 4 12"/></Icon>;
         const X = (props) => <Icon {...props}><path d="M18 6 6 18" /><path d="m6 6 12 12" /></Icon>;
+        const Search = (props) => <Icon {...props}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></Icon>;
+        const AlertTriangle = (props) => <Icon {...props}><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></Icon>;
 
         const CombinePage = () => {
             const [isAthleteModalOpen, setIsAthleteModalOpen] = useState(false);
@@ -87,42 +84,65 @@
                                 <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                                 <span className="font-bold text-sm uppercase tracking-wider">Back to Home</span>
                             </a>
-                            <div className="w-8 h-8 bg-lime-400 rounded-lg flex items-center justify-center">
-                                <span className="font-bold text-neutral-950 text-xl">A</span>
+                            {/* Updated Right Side: Partnership Logos */}
+                            <div className="flex items-center gap-4">
+                                {/* LOGO UPDATE: Replaced Placeholder with logo.png */}
+                                <img src="./bwlogo.png" alt="Active Pockets" className="h-8 w-8 rounded-lg" />
+                                
+                                <span className="text-neutral-500 font-bold text-xs">X</span>
+                                <div className="h-8 w-auto">
+                                    {/* AlphaSense Logo Placeholder */}
+                                    <img src="https://via.placeholder.com/120x40/ffffff/000000?text=AlphaSense" alt="AlphaSense Logo" className="h-full object-contain opacity-80" />
+                                </div>
                             </div>
                         </div>
                     </nav>
 
                     {/* SECTION 1: VIDEO INTRO */}
                     <section className="pt-32 pb-20 relative overflow-hidden">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-full bg-lime-400/5 blur-[150px] rounded-full pointer-events-none" />
+                        {/* Background Image Container */}
+                        <div className="absolute top-0 left-0 right-0 h-[600px] z-0">
+                            <img 
+                                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
+                                alt="Combine Background" 
+                                className="w-full h-full object-cover opacity-20"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/80 to-neutral-950"></div>
+                        </div>
+
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-full bg-lime-400/5 blur-[150px] rounded-full pointer-events-none z-0" />
                         
                         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-lime-400 text-xs font-bold tracking-wider uppercase mb-6">
-                                <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
-                                Live Session: Feb 17-19
+                            <div className="flex flex-col items-center gap-4 mb-8">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-white/10 text-white text-xs font-bold tracking-wider uppercase shadow-lg">
+                                    <span className="text-lime-400">●</span> 
+                                    Powered by <span className="text-white ml-1">AlphaSense</span>
+                                </div>
+                                <div className="inline-flex items-center gap-2 text-lime-400 bg-lime-400/10 border border-lime-400/20 px-4 py-2 rounded-lg animate-pulse">
+                                    <AlertTriangle className="w-4 h-4" />
+                                    <span className="font-bold uppercase tracking-widest text-sm">Registration Open • Starts Feb 17</span>
+                                </div>
                             </div>
                             
                             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                                Watch the <span className="text-lime-400">Game Tape.</span>
+                                Join the <span className="text-lime-400">Financial Combine.</span>
                             </h1>
                             <p className="text-lg text-neutral-400 max-w-2xl mx-auto mb-12">
-                                Coach Tariq breaks down the 3-day intensive workshop. From understanding the "Time Mismatch" to building your Fantasy Stock Portfolio, this is your CFO training.
+                                Watch Tariq break down what we’ll cover over the 3 intensive sessions. We’ll provide you with a personalized playbook that’s crafted by <strong>Coach Pocket</strong>, our AI assistant that’s powered by the same market intelligence platform trusted by 95% of the world's top consultancies to build your financial edge.
                             </p>
 
-                            {/* Video Placeholder */}
-                            {/* Video Container */}
-<div className="relative aspect-video w-full bg-neutral-900 rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(163,230,53,0.1)] overflow-hidden">
-    <iframe 
-        className="w-full h-full"
-        src="https://www.youtube.com/embed/HXI62BdgwRA?si=UJaCo5bkmJsCrvz6" 
-        title="YouTube video player" 
-        frameBorder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerPolicy="strict-origin-when-cross-origin" 
-        allowFullScreen
-    ></iframe>
-</div>
+                            {/* VIDEO UPDATE: Swapped Image for YouTube Embed */}
+                            <div className="relative aspect-video w-full bg-neutral-900 rounded-2xl border border-white/10 shadow-[0_0_50px_rgba(163,230,53,0.1)] overflow-hidden">
+                                <iframe 
+                                    className="w-full h-full"
+                                    src="https://www.youtube.com/embed/HXI62BdgwRA?si=UJaCo5bkmJsCrvz6" 
+                                    title="YouTube video player" 
+                                    frameBorder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerPolicy="strict-origin-when-cross-origin" 
+                                    allowFullScreen
+                                ></iframe>
+                            </div>
                         </div>
                     </section>
 
@@ -131,10 +151,19 @@
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="grid lg:grid-cols-2 gap-16 items-start">
                                 <div>
-                                    <h2 className="text-3xl md:text-4xl font-bold mb-6">The 4-Quarter<br/>Game Plan.</h2>
+                                    <h2 className="text-3xl md:text-4xl font-bold mb-6">The 4-Quarter<br/>Approach.</h2>
                                     <p className="text-neutral-400 text-lg mb-8">
-                                        We don't do "lectures." We run drills. Over 3 live sessions (Feb 17-19) and one private AI coaching session, we systematically build your financial infrastructure from the ground up. By the final buzzer, you have a tangible asset in your hands.
+                                        Over 3 sessions (Feb 17-19) and one private AI coaching session that’s trained on premium AlphaSense market intelligence to systematically build your financial infrastructure from the ground up.
                                     </p>
+                                    <div className="p-6 bg-neutral-800 rounded-xl border border-white/5 mb-8">
+                                        <div className="flex items-center gap-2 mb-2">
+                                            <Search className="w-4 h-4 text-lime-400" />
+                                            <span className="text-xs font-bold text-lime-400 uppercase tracking-wider">The AlphaSense Advantage</span>
+                                        </div>
+                                        <p className="text-sm text-neutral-400">
+                                            Just like you use game film to study opponents, we use AlphaSense to analyze companies and make strategic investments.
+                                        </p>
+                                    </div>
                                     <button 
                                         onClick={() => setIsAthleteModalOpen(true)}
                                         className="bg-lime-400 text-neutral-950 px-8 py-3 rounded-full font-bold hover:bg-lime-300 transition-colors"
@@ -148,13 +177,13 @@
                                         q="Q1" 
                                         date="Feb 17"
                                         title="The Kickoff: The Time Mismatch" 
-                                        desc="We establish urgency. We analyze the math of a 4-year earning window vs. a 50-year life, define your role as CEO, and explain why cash is for safety, not wealth. We teach you how to use Engine 1 (Labor) to build Engine 2 (Capital)."
+                                        desc="We establish urgency using hard data. We analyze the math of a 4-year earning window vs. a 50-year life, define your role as CEO, and explain why cash is for safety, not wealth. We teach you how to use Engine 1 (Labor) to build Engine 2 (Capital)."
                                     />
                                     <QuarterCard 
                                         q="Q2" 
                                         date="Feb 18"
                                         title="Film Study: Market Mechanics" 
-                                        desc="How the market actually works, using UPS as a live case study. We learn the 5 Skills of an Investor: The Pivot (Margins), Valuation (P/E Ratio), Macro Factors (The Weather), Earnings (The Scoreboard), and The Moat (Defense)."
+                                        desc="We dive into UPS as a live case study. Using real analyst reports and expert calls, we learn the 5 Skills of an Investor: The Pivot (Margins), Valuation (P/E Ratio), Macro Factors (The Weather), Earnings (The Scoreboard), and The Moat (Defense)."
                                     />
                                     <QuarterCard 
                                         q="Q3" 
@@ -165,7 +194,7 @@
                                     <QuarterCard 
                                         q="Q4" 
                                         date="Private Session"
-                                        title="Coach Omaha: The CEO Manual" 
+                                        title="Coach Pocket" 
                                         desc="Your private 1:1 session with our AI Coach. We synthesize your work from the first 3 sessions to construct your personalized Digital Playbook and finalize your Defensive Guardrails."
                                     />
                                 </div>
@@ -181,17 +210,23 @@
                                 <div className="w-full md:w-1/3 relative group">
                                     <div className="absolute inset-0 bg-lime-400 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform"></div>
                                     <div className="relative aspect-[3/4] bg-neutral-800 rounded-2xl overflow-hidden border border-white/10">
+                                        {/* COACH UPDATE: Swapped Unsplash for coach.jpg */}
                                         <img 
-    src="./riq_trading.jpg" 
-    alt="Coach Tariq" 
-    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-/>
+                                            src="./riq_trading.jpg" 
+                                            alt="Coach Tariq" 
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                        />
                                     </div>
                                 </div>
 
                                 {/* Coach Bio */}
                                 <div className="w-full md:w-2/3">
-                                    <div className="inline-block text-lime-400 font-bold tracking-widest uppercase text-xs mb-2">Head Coach & Founder</div>
+                                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                                        <div className="inline-block text-lime-400 font-bold tracking-widest uppercase text-xs">Head Coach & Founder</div>
+                                        <div className="w-1 h-1 bg-neutral-700 rounded-full"></div>
+                                        <div className="inline-block text-white font-bold tracking-widest uppercase text-xs">Analyst at AlphaSense</div>
+                                    </div>
+                                    
                                     <h2 className="text-3xl md:text-5xl font-bold mb-6">Meet Coach Tariq</h2>
                                     
                                     <div className="space-y-4 text-neutral-400 text-lg leading-relaxed">
@@ -199,21 +234,21 @@
                                             "I didn't start Active Pockets because I loved spreadsheets. I started it because I saw too many of my teammates leave the game with nothing to show for it."
                                         </p>
                                         <p>
-                                            As a former athlete, I know the pressure of the locker room. I know what it's like to have agents, cousins, and 'financial gurus' pitching you deals you don't understand. 
+                                            As an <strong>Analyst at AlphaSense</strong>, I spend my days helping the world's top consulting firms and hedge funds extract actionable insights from noise. I built Active Pockets to bring that same <strong>institutional-grade advantage</strong> to athletes.
                                         </p>
                                         <p>
-                                            I realized the industry wasn't built for us—it was built to extract fees from us. So I built the system I wish I had. A system that puts the athlete in the CEO chair, not the passenger seat.
+                                            I realized the industry wasn't built for us—it was built to extract fees from us. So I built the system I wish I had. A system that puts the athlete in the CEO chair, powered by the world's leading market intelligence platform.
                                         </p>
                                     </div>
 
                                     <div className="mt-8 pt-8 border-t border-white/5 grid grid-cols-2 gap-8">
                                         <div>
-                                            <div className="text-3xl font-bold text-white mb-1">10+</div>
+                                            <div className="text-3xl font-bold text-white mb-1">5+</div>
                                             <div className="text-xs text-neutral-500 uppercase font-bold">Years in FinTech</div>
                                         </div>
                                         <div>
-                                            <div className="text-3xl font-bold text-white mb-1">100%</div>
-                                            <div className="text-xs text-neutral-500 uppercase font-bold">Athlete Focused</div>
+                                            <div className="text-3xl font-bold text-white mb-1">Top 1%</div>
+                                            <div className="text-xs text-neutral-500 uppercase font-bold">Data Access</div>
                                         </div>
                                     </div>
                                 </div>
@@ -223,15 +258,15 @@
 
                     {/* SECTION 4: FINAL CTA */}
                     <section className="py-24 text-center">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to suit up?</h2>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to get active?</h2>
                         <p className="text-neutral-400 mb-8 max-w-xl mx-auto">
-                            The next Combine cohort starts February 17th. Secure your spot and start building your legacy.
+                            The next Combine kicks off February 17th. Spots are limited to ensure personalized attention.
                         </p>
                         <button 
                             onClick={() => setIsAthleteModalOpen(true)}
                             className="bg-lime-400 text-neutral-950 px-12 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all shadow-[0_0_30px_rgba(163,230,53,0.3)] hover:scale-105"
                         >
-                            Get Your Playbook
+                            Lock In Your Spot Now
                         </button>
                     </section>
 
@@ -240,7 +275,7 @@
                         <p className="text-neutral-600 text-sm">© 2024 Active Pockets. All rights reserved.</p>
                     </footer>
 
-                    {/* Athlete Modal (Same as Index) */}
+                    {/* Athlete Modal */}
                     {isAthleteModalOpen && (
                         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950/80 backdrop-blur-sm p-4 animate-in fade-in duration-200" onClick={() => setIsAthleteModalOpen(false)}>
                             <div className="bg-neutral-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative" onClick={e => e.stopPropagation()}>
@@ -248,20 +283,50 @@
                                 <div className="p-8">
                                     <div className="mb-6">
                                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-400/10 border border-lime-400/20 text-lime-400 text-xs font-bold tracking-wider uppercase mb-3">Athlete Access</div>
-                                        <h3 className="text-2xl font-bold text-white mb-2">Let’s Build Your Playbook</h3>
+                                        <h3 className="text-2xl font-bold text-white mb-2">Secure Your Spot</h3>
                                         <p className="text-neutral-400">Fill out the details below to start your application for the next Combine.</p>
                                     </div>
-                                    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                                    
+                                    {/* FORM UPDATE: Connected to Formspree + Named Inputs */}
+                                    <form 
+                                        className="space-y-4" 
+                                        action="https://formspree.io/f/mwvvarkb" 
+                                        method="POST"
+                                    >
                                         <div className="grid grid-cols-2 gap-4">
-                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">First Name</label><input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="Marcus" /></div>
-                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Last Name</label><input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="Johnson" /></div>
+                                            <div className="space-y-1">
+                                                <label className="text-xs font-bold text-neutral-500 uppercase">First Name</label>
+                                                <input type="text" name="firstName" required className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="Marcus" />
+                                            </div>
+                                            <div className="space-y-1">
+                                                <label className="text-xs font-bold text-neutral-500 uppercase">Last Name</label>
+                                                <input type="text" name="lastName" required className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="Johnson" />
+                                            </div>
                                         </div>
-                                        <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Email Address</label><input type="email" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="marcus@example.com" /></div>
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-bold text-neutral-500 uppercase">Email Address</label>
+                                            <input type="email" name="email" required className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="marcus@example.com" />
+                                        </div>
                                         <div className="grid grid-cols-2 gap-4">
-                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Sport</label><select className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400"><option>Football</option><option>Basketball</option><option>Baseball</option><option>Other</option></select></div>
-                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Level</label><select className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400"><option>NCAA</option><option>Professional</option><option>Prep</option></select></div>
+                                            <div className="space-y-1">
+                                                <label className="text-xs font-bold text-neutral-500 uppercase">Sport</label>
+                                                <select name="sport" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400">
+                                                    <option value="Football">Football</option>
+                                                    <option value="Basketball">Basketball</option>
+                                                    <option value="Baseball">Baseball</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div className="space-y-1">
+                                                <label className="text-xs font-bold text-neutral-500 uppercase">Level</label>
+                                                <select name="level" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400">
+                                                    <option value="NCAA">NCAA</option>
+                                                    <option value="Professional">Professional</option>
+                                                    <option value="Prep">Prep</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <button className="w-full bg-lime-400 text-neutral-950 font-bold py-4 rounded-xl hover:bg-lime-300 mt-2">Start Application</button>
+                                        <button type="submit" className="w-full bg-lime-400 text-neutral-950 font-bold py-4 rounded-xl hover:bg-lime-300 mt-2 transition-colors">Submit</button>
                                     </form>
                                 </div>
                             </div>
