@@ -247,4 +247,281 @@
                                         q="Q4" 
                                         date="Feb 19 • Live Stream"
                                         title="Practice Squad: Execution" 
-                                        desc
+                                        desc="Transition from theory to action. We walk through brokerage accounts, order types (Market vs. Limit), and finalize your 'Fantasy Stock Portfolio' using the Rookie, Vet, or Legacy models."
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SECTION 4: THE DELIVERABLE (TABLET MOCKUP) */}
+                    <section className="py-24 bg-neutral-900 border-y border-white/5 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-neutral-950/50"></div>
+                        <div className="max-w-7xl mx-auto px-6 relative z-10">
+                            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                                <div className="order-2 lg:order-1 relative">
+                                    {/* Tablet Mockup */}
+                                    <div className="relative mx-auto w-full max-w-[600px] aspect-[4/3] bg-neutral-800 rounded-[2rem] border-[8px] border-neutral-700 shadow-2xl p-2 md:p-4">
+                                        <div className="w-full h-full bg-neutral-900 rounded-xl overflow-hidden relative flex flex-col">
+                                            {/* Mockup Header - Simple App Bar */}
+                                            <div className="h-14 bg-neutral-800/50 flex items-center px-6 border-b border-white/5 justify-between backdrop-blur-sm sticky top-0 z-20">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-6 h-6 bg-lime-400 rounded flex items-center justify-center text-neutral-950 font-bold text-[10px]">A</div>
+                                                    <span className="text-xs font-bold text-neutral-300 tracking-wider">ACTIVE POCKETS</span>
+                                                </div>
+                                                <div className="w-8 h-8 rounded-full bg-neutral-700 border border-white/10 flex items-center justify-center">
+                                                    <Users className="w-4 h-4 text-neutral-400" />
+                                                </div>
+                                            </div>
+                                            
+                                            {/* Mockup Body - Single Column Dashboard */}
+                                            <div className="flex-1 p-6 md:p-8 overflow-y-auto custom-scrollbar relative z-0">
+                                                {/* Hero Stats Card */}
+                                                <div className="bg-gradient-to-br from-neutral-800 to-neutral-800/50 p-6 rounded-2xl border border-white/10 mb-8 shadow-lg relative overflow-hidden group">
+                                                    <div className="absolute top-0 right-0 w-32 h-32 bg-lime-400/10 rounded-full blur-[40px] pointer-events-none"></div>
+                                                    <div className="relative z-10">
+                                                        <p className="text-xs text-neutral-400 font-bold uppercase tracking-wider mb-2">Projected Lifetime Value</p>
+                                                        <div className="flex items-baseline gap-3 mb-4">
+                                                            <h3 className="text-3xl md:text-4xl font-bold text-white">$11.4M</h3>
+                                                            <span className="px-2 py-0.5 rounded bg-lime-400/20 border border-lime-400/20 text-lime-400 text-xs font-bold">+8.4%</span>
+                                                        </div>
+                                                        <div className="w-full h-1.5 bg-neutral-700 rounded-full overflow-hidden">
+                                                            <div className="w-3/4 h-full bg-lime-400 rounded-full"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                {/* Single Column Metric List */}
+                                                <div className="space-y-4 pb-12">
+                                                    <div className="text-xs text-neutral-500 font-bold uppercase tracking-widest pl-1 mb-2">My Playbook Settings</div>
+                                                    <div className="flex items-center justify-between p-4 rounded-xl bg-neutral-800/30 border border-white/5 hover:bg-neutral-800/50 transition-colors">
+                                                        <div className="flex items-center gap-4">
+                                                            <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-500"><Target className="w-5 h-5" /></div>
+                                                            <div><p className="text-xs text-neutral-400 font-bold uppercase">Risk Profile</p><p className="text-sm md:text-base font-bold text-white">Aggressive Growth</p></div>
+                                                        </div>
+                                                        <div className="h-2 w-2 rounded-full bg-red-500"></div>
+                                                    </div>
+                                                    <div className="flex items-center justify-between p-4 rounded-xl bg-neutral-800/30 border border-white/5 hover:bg-neutral-800/50 transition-colors">
+                                                        <div className="flex items-center gap-4">
+                                                            <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500"><Cpu className="w-5 h-5" /></div>
+                                                            <div><p className="text-xs text-neutral-400 font-bold uppercase">Model Allocation</p><p className="text-sm md:text-base font-bold text-white">D-7 (Tech & Real Estate)</p></div>
+                                                        </div>
+                                                        <div className="h-2 w-2 rounded-full bg-blue-500"></div>
+                                                    </div>
+                                                    <div className="flex items-center justify-between p-4 rounded-xl bg-neutral-800/30 border border-white/5 hover:bg-neutral-800/50 transition-colors">
+                                                        <div className="flex items-center gap-4">
+                                                            <div className="w-10 h-10 rounded-full bg-lime-400/20 flex items-center justify-center text-lime-400"><Shield className="w-5 h-5" /></div>
+                                                            <div><p className="text-xs text-neutral-400 font-bold uppercase">Guardrails</p><p className="text-sm md:text-base font-bold text-white">Active & Monitored</p></div>
+                                                        </div>
+                                                        <div className="h-2 w-2 rounded-full bg-lime-400 animate-pulse"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* Bottom Fade Overlay */}
+                                            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-neutral-900 via-neutral-900/80 to-transparent pointer-events-none z-10"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="order-1 lg:order-2">
+                                    <h2 className="text-4xl md:text-5xl font-bold mb-6">This is Your <br /><span className="text-lime-400">CEO Manual.</span></h2>
+                                    <p className="text-neutral-400 text-lg mb-8">
+                                        Your custom playbook is delivered in a secure digital portal. It's not a static PDF; it's a living strategy document.
+                                    </p>
+                                    
+                                    <div className="space-y-6">
+                                        <DeliverableItem title="Your Personal Financial Mission Statement" />
+                                        <DeliverableItem title="Investment Philosophy & Risk Profile" />
+                                        <DeliverableItem title="Sample Asset Allocations That Match Your Style" />
+                                        <DeliverableItem title="Custom 'Defensive Guardrails' Checklist" />
+                                        <DeliverableItem title="'CEO Roundtable' Framework to Manage Advisors" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SECTION 5: MEET THE COACH */}
+                    <section className="py-24 relative">
+                        <div className="max-w-6xl mx-auto px-6">
+                            <div className="bg-neutral-900 rounded-3xl border border-white/5 p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
+                                {/* Coach Image */}
+                                <div className="w-full md:w-1/3 relative group">
+                                    <div className="absolute inset-0 bg-lime-400 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform"></div>
+                                    <div className="relative aspect-[3/4] bg-neutral-800 rounded-2xl overflow-hidden border border-white/10">
+                                        <img 
+                                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                                            alt="Coach Tariq" 
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Coach Bio */}
+                                <div className="w-full md:w-2/3">
+                                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                                        <div className="inline-block text-lime-400 font-bold tracking-widest uppercase text-xs">Head Coach & Founder</div>
+                                    </div>
+                                    
+                                    <h2 className="text-3xl md:text-5xl font-bold mb-6">Meet Coach Tariq</h2>
+                                    
+                                    <div className="space-y-4 text-neutral-400 text-lg leading-relaxed">
+                                        <p>
+                                            "I didn't start Active Pockets because I loved spreadsheets. I started it because I saw too many of my teammates leave the game with nothing to show for it."
+                                        </p>
+                                        <p>
+                                            My background in FinTech taught me that the "system" isn't broken—it's just designed for the people who understand the rules. My job is to teach you those rules.
+                                        </p>
+                                        <p>
+                                            I built Active Pockets to be the Pre-Advisory Firm I wish I had. A system that puts the athlete in the CEO chair, ensuring you can "talk ball" with any agent, accountant, or advisor that comes your way.
+                                        </p>
+                                    </div>
+
+                                    <div className="mt-8 pt-8 border-t border-white/5 grid grid-cols-2 gap-8">
+                                        <div>
+                                            <div className="text-3xl font-bold text-white mb-1">5+</div>
+                                            <div className="text-xs text-neutral-500 uppercase font-bold">Years in FinTech</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-3xl font-bold text-white mb-1">100%</div>
+                                            <div className="text-xs text-neutral-500 uppercase font-bold">Athlete Focused</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SECTION 6: THE INVESTMENT */}
+                    <section className="py-24 bg-neutral-900 border-t border-white/5">
+                        <div className="max-w-4xl mx-auto px-6 text-center">
+                            <h2 className="text-4xl md:text-5xl font-bold mb-6">An Investment in a <br />Secure Future.</h2>
+                            <p className="text-neutral-400 text-lg mb-12 max-w-2xl mx-auto">
+                                The complete "Financial Combine" program, including all live sessions, private breakdowns, and your custom-built digital playbook.
+                            </p>
+
+                            <div className="bg-neutral-950 rounded-3xl p-8 md:p-12 border border-lime-400/30 shadow-[0_0_50px_rgba(163,230,53,0.05)] relative overflow-hidden">
+                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-lime-400 shadow-[0_0_20px_rgba(163,230,53,1)]"></div>
+                                
+                                <h3 className="text-2xl font-bold mb-6">The Financial Combine Program</h3>
+                                
+                                <div className="mb-10 p-6 bg-white/5 rounded-2xl border border-white/5 max-w-lg mx-auto">
+                                    <p className="text-lg text-neutral-300 italic">
+                                        "The best investment you can make is in your own financial literacy."
+                                    </p>
+                                    <div className="mt-4 flex items-center justify-center gap-2 text-lime-400 text-sm font-bold uppercase tracking-wider">
+                                        <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+                                        Enrollment Currently Open
+                                    </div>
+                                </div>
+                                
+                                <button 
+                                    onClick={() => setIsAthleteModalOpen(true)}
+                                    className="w-full md:w-auto bg-lime-400 text-neutral-950 px-12 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all transform hover:scale-105 mb-6"
+                                >
+                                    Get Your Playbook
+                                </button>
+                                
+                                <p className="text-sm text-neutral-500">
+                                    Coaches & Directors: <a href="#" className="underline hover:text-lime-400">Inquire about rates for teams & NIL collectives.</a>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SECTION 7: FINAL CTA */}
+                    <section className="py-24 text-center bg-neutral-950 relative overflow-hidden">
+                        <div className="absolute inset-0 bg-lime-400/5 blur-[150px] rounded-full pointer-events-none"></div>
+                        <div className="relative z-10">
+                            <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to get active?</h2>
+                            <p className="text-neutral-400 mb-8 max-w-xl mx-auto text-lg">
+                                The Q1 Private Sessions must be completed by Feb 7th. Secure your spot now to ensure your playbook is ready for the live sessions.
+                            </p>
+                            <button 
+                                onClick={() => setIsAthleteModalOpen(true)}
+                                className="bg-lime-400 text-neutral-950 px-12 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all shadow-[0_0_30px_rgba(163,230,53,0.3)] hover:scale-105"
+                            >
+                                Lock In Your Spot Now
+                            </button>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="bg-neutral-950 py-12 border-t border-white/10 relative z-10 text-center">
+                        <p className="text-neutral-600 text-sm">© 2024 Active Pockets. All rights reserved.</p>
+                    </footer>
+
+                    {/* Athlete Modal */}
+                    {isAthleteModalOpen && (
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950/80 backdrop-blur-sm p-4 animate-in fade-in duration-200" onClick={() => setIsAthleteModalOpen(false)}>
+                            <div className="bg-neutral-900 w-full max-w-lg rounded-3xl border border-white/10 shadow-2xl overflow-hidden relative" onClick={e => e.stopPropagation()}>
+                                <button onClick={() => setIsAthleteModalOpen(false)} className="absolute top-4 right-4 p-2 rounded-full bg-neutral-800 text-neutral-400 hover:text-white"><X className="w-5 h-5" /></button>
+                                <div className="p-8">
+                                    <div className="mb-6">
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-400/10 border border-lime-400/20 text-lime-400 text-xs font-bold tracking-wider uppercase mb-3">Athlete Access</div>
+                                        <h3 className="text-2xl font-bold text-white mb-2">Secure Your Spot</h3>
+                                        <p className="text-neutral-400">Fill out the details below to start your application for the next Combine.</p>
+                                    </div>
+                                    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">First Name</label><input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="Marcus" /></div>
+                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Last Name</label><input type="text" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="Johnson" /></div>
+                                        </div>
+                                        <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Email Address</label><input type="email" className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400" placeholder="marcus@example.com" /></div>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Sport</label><select className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400"><option>Football</option><option>Basketball</option><option>Baseball</option><option>Other</option></select></div>
+                                            <div className="space-y-1"><label className="text-xs font-bold text-neutral-500 uppercase">Level</label><select className="w-full bg-neutral-800 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-lime-400"><option>NCAA</option><option>Professional</option><option>Prep</option></select></div>
+                                        </div>
+                                        <button className="w-full bg-lime-400 text-neutral-950 font-bold py-4 rounded-xl hover:bg-lime-300 mt-2">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                </div>
+            );
+        };
+
+        const QuarterCard = ({ q, date, title, desc, isHighlighter }) => (
+            <div className={`flex gap-6 group rounded-2xl p-4 transition-all ${isHighlighter ? 'bg-neutral-800/50 border border-lime-400/20' : 'hover:bg-neutral-900'}`}>
+                <div className="flex flex-col items-center">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-black transition-colors shrink-0 z-10 relative ${isHighlighter ? 'bg-lime-400 text-neutral-950' : 'bg-neutral-800 border border-white/10 text-lime-400 group-hover:bg-lime-400 group-hover:text-black'}`}>
+                        {q}
+                    </div>
+                    {!isHighlighter && <div className="w-0.5 h-full bg-neutral-800 group-last:hidden -my-2"></div>}
+                </div>
+                <div className="pb-2">
+                    <div className="text-xs font-bold text-lime-400 uppercase tracking-widest mb-1">{date}</div>
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-lime-400 transition-colors">{title}</h3>
+                    <p className="text-neutral-400 leading-relaxed text-sm">{desc}</p>
+                </div>
+            </div>
+        );
+
+        const ProblemCard = ({ icon, title, desc }) => (
+            <div className="bg-neutral-800/30 p-8 rounded-2xl border border-white/5 hover:border-lime-400/30 transition-all duration-300 hover:bg-neutral-800/50 group">
+                <div className="bg-neutral-900 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                {icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-lime-400 transition-colors">{title}</h3>
+                <p className="text-neutral-400 leading-relaxed">{desc}</p>
+            </div>
+        );
+
+        const DeliverableItem = ({ title }) => (
+            <div className="flex items-center gap-4 bg-neutral-900/50 p-4 rounded-xl border border-white/5 hover:border-lime-400/20 transition-colors">
+                <Target className="w-5 h-5 text-lime-400 shrink-0" />
+                <span className="font-medium text-neutral-200">{title}</span>
+            </div>
+        );
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<CombinePage />);
+    </script>
+    
+    <elevenlabs-convai agent-id="agent_7101kezpq864egkb259fhwhsjdqj"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+</body>
+</html>
