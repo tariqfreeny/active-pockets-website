@@ -426,21 +426,23 @@
                     </section>
 
                     {/* SECTION 7: FINAL CTA */}
-                    <section className="py-24 text-center bg-neutral-950 relative overflow-hidden">
-                        <div className="absolute inset-0 bg-lime-400/5 blur-[150px] rounded-full pointer-events-none"></div>
-                        <div className="relative z-10">
-                            <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to get active?</h2>
-                            <p className="text-neutral-400 mb-8 max-w-xl mx-auto text-lg">
-                                The Q1 Private Sessions must be completed by <strong>Feb 7th</strong>. Secure your spot now to ensure your playbook is ready for the live sessions.
-                            </p>
-                            <button 
-                                onClick={() => setIsAthleteModalOpen(true)}
-                                className="bg-lime-400 text-neutral-950 px-12 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all shadow-[0_0_30px_rgba(163,230,53,0.3)] hover:scale-105"
-                            >
-                                Lock In Your Spot Now
-                            </button>
-                        </div>
-                    </section>
+<section className="py-24 text-center bg-neutral-950 relative overflow-hidden">
+    <div className="absolute inset-0 bg-lime-400/5 blur-[150px] rounded-full pointer-events-none"></div>
+    
+    {/* ADDED px-6 HERE */}
+    <div className="relative z-10 px-6">
+        <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to get active?</h2>
+        <p className="text-neutral-400 mb-8 max-w-xl mx-auto text-lg">
+            The Q1 Private Sessions must be completed by <strong>Feb 7th</strong>. Secure your spot now to ensure your playbook is ready for the live sessions.
+        </p>
+        <button 
+            onClick={() => setIsAthleteModalOpen(true)}
+            className="bg-lime-400 text-neutral-950 px-12 py-4 rounded-full font-bold text-lg hover:bg-lime-300 transition-all shadow-[0_0_30px_rgba(163,230,53,0.3)] hover:scale-105"
+        >
+            Lock In Your Spot Now
+        </button>
+    </div>
+</section>
 
                     {/* Footer */}
                     <footer className="bg-neutral-950 py-12 border-t border-white/10 relative z-10 text-center">
